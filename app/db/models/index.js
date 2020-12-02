@@ -19,6 +19,9 @@ module.exports = (()=> {
             }
         }
         
+        //Verifica para cada modelo que é percorrido pelo forEach se existe uma funçao associate
+        //Isso é verificado pela função typeof model.associate
+        // ao veirifcar isso injeta na função associate os models
         Object.values(models).forEach(
             model => {
                 if(typeof model.associate == 'function'){

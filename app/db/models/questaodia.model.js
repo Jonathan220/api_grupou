@@ -3,9 +3,9 @@ const models = require('.');
 const sequelize = require('../index').getConnection();
 const name = require('path').basename(__filename.replace('.model', ''), '.js');
 
-const Questao = sequelize.define(name, {
+const QuestaoDia = sequelize.define(name, {
     descricao: {
-        type: DataTypes.TEXT,
+        type: DataTypes.TEXT
     },
     createdAt: {
         type: DataTypes.DATE,
@@ -20,26 +20,21 @@ const Questao = sequelize.define(name, {
     tableName: name,
 });
 
-Questao.associate = (models) => {
-    Questao.belongsTo(models.usuario, {
-        foreignKey:{
-            name: 'id_usuario'
+QuestaoDia.associate = (models) =>{
+
+    QuestaoDia.belongsTo(models.aluno, {
+        foreignKey: {
+            name: 'id_aluno'
         },
-        as: 'usuario'
+        as: 'aluno'
     })
 
-    Questao.hasMany(models.questaodia, {
+    QuestaoDia.belongsTo(models.questao, {
         foreignKey: {
             name: 'id_questao'
         },
-        as: 'questaodia'
-    })
-
-    Questao.belongsTo(models.hardskill, {
-        foreignKey:{
-            name: 'id_hardskill'
-        },
-        as: 'hardskill'
+        as: 'questao'
     })
 }
-module.exports = Questao;
+
+module.exports = QuestaoDia;
