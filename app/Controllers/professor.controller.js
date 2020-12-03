@@ -3,21 +3,21 @@ const models = require('../db/models');
 
 exports.show = async (id) =>{
     const resultado = await models.professor.findByPk(id, {
-        include: ['usuario']
+        include: ['usuario', 'disciplina']
     });
     return resultado;
 }
 
 exports.index = async () =>{
     const resultado = await models.professor.findAll({
-        include: ['usuario']
+        include: ['usuario', 'disciplina']
     });
     return resultado;
 }
 
 exports.store = async (professor) =>{
     const resultado = await models.professor.create(professor, {
-        include: ['usuario']
+        include: ['usuario', 'disciplina']
     });
     return resultado;
 }

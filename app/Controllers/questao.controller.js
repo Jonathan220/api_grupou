@@ -1,12 +1,5 @@
 const models = require('../db/models');
 
-// GET, POST, PUT, DELETE
-// SELECT, INSERT, UPDATE, DELETE
-//index GET ALL - pegar todos os registros
-//show GET ID - pegar um usuario especifco
-//store POST usuario
-//update PUT usuario, ID
-//destroy DELETE ID
 
 exports.show = async (id) =>{
     const resultado = await models.questao.findByPk(id, {
